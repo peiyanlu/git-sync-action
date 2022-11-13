@@ -1,0 +1,30 @@
+name: 'Sync a repository using SSH'
+description: 'Action for sync a repository in another location (Bitbucket, GitHub, GitLab, Gitee…) using SSH.'
+branding:
+  icon: 'copy'
+  color: 'orange'
+inputs:
+  source-repo:
+    description: 'SSH URL of the source repo.'
+    required: true
+    default: ''
+  destination-repo:
+    description: 'SSH URL of the destination repo.'
+    required: true
+    default: ''
+  destination-branch:
+    description: 'SSH URL of the destination branch.'
+    required: false
+    default: ''
+  dry-run:
+    description: 'Execute a dry run.'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source-repo }}
+    - ${{ inputs.destination-repo }}
+    - ${{ inputs.destination-branch }}
+    - ${{ inputs.dry-run }}
