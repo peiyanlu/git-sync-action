@@ -16,7 +16,7 @@ echo -e "\e[32m DRY_RUN: $DRY_RUN \e[0m"
 
 
 
-if [ -n "$DESTINATION_BRANCH" ];
+if [ "$DESTINATION_BRANCH" != 'null' ];
 then
   echo -e "\e[35m Sync branch... \e[0m"
   git clone -b "$DESTINATION_BRANCH" "$SOURCE_REPO" "$SOURCE_DIR" && cd "$SOURCE_DIR"
